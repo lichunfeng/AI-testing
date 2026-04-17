@@ -1,0 +1,97 @@
+<!-- pages/result/result.wxml -->
+<view class="container">
+  <!-- 步骤指示器 -->
+  <view class="header">
+    <view class="step-dots">
+      <view class="dot done">✓</view>
+      <view class="line active"></view>
+      <view class="dot done">✓</view>
+      <view class="line active"></view>
+      <view class="dot active">3</view>
+    </view>
+    <text class="step-text">换装完成</text>
+  </view>
+
+  <!-- 结果图展示 -->
+  <view class="result-showcase">
+    <view class="result-card">
+      <image 
+        class="result-image" 
+        src="{{resultImage}}" 
+        mode="aspectFit"
+        bindtap="previewResult"></image>
+      
+      <!-- 风格标签 -->
+      <view class="style-badge">
+        <text class="badge-text">{{styleName}}</text>
+        <text class="badge-mode">{{mode === 'couple' ? '· 合照换装' : '· 单人换装'}}</text>
+      </view>
+    </view>
+  </view>
+
+  <!-- 操作按钮 -->
+  <view class="action-grid">
+    <view class="action-item" bindtap="saveToAlbum">
+      <view class="action-icon">💾</view>
+      <text class="action-text">保存到相册</text>
+    </view>
+    
+    <view class="action-item" bindtap="shareToFriend">
+      <view class="action-icon">📤</view>
+      <text class="action-text">分享给好友</text>
+    </view>
+    
+    <view class="action-item" bindtap="shareToMoments">
+      <view class="action-icon">🌏</view>
+      <text class="action-text">分享朋友圈</text>
+    </view>
+    
+    <view class="action-item" bindtap="tryAgain">
+      <view class="action-icon">🔄</view>
+      <text class="action-text">再试一套</text>
+    </view>
+  </view>
+
+  <!-- 建议 -->
+  <view class="suggestions card">
+    <view class="suggestions-title">💡 你可能还喜欢</view>
+    <scroll-view class="suggestions-scroll" scroll-x>
+      <view class="suggestion-item" wx:for="{{suggestions}}" wx:key="id" bindtap="trySuggestion" data-item="{{item}}">
+        <image class="suggestion-img" src="{{item.image}}" mode="aspectFill"></image>
+        <text class="suggestion-name">{{item.name}}</text>
+      </view>
+    </scroll-view>
+  </view>
+
+  <!-- 底部导航 -->
+  <view class="bottom-nav">
+    <button class="btn-primary" bindtap="startOver">重新开始</button>
+    <button class="btn-secondary" bindtap="goHome">返回首页</button>
+  </view>
+</view>
+
+<!-- 分享弹窗 -->
+<view class="share-modal" wx:if="{{showShareModal}}" bindtap="closeShareModal">
+  <view class="share-content" catchtap="">
+    <text class="share-title">分享到</text>
+    <view class="share-platforms">
+      <view class="share-btn" bindtap="shareWechat">
+        <image class="share-icon" src="/images/wechat-icon.png"></image>
+        <text>微信好友</text>
+      </view>
+      <view class="share-btn" bindtap="shareWeibo">
+        <image class="share-icon" src="/images/weibo-icon.png"></image>
+        <text>微博</text>
+      </view>
+      <view class="share-btn" bindtap="shareQQ">
+        <image class="share-icon" src="/images/qq-icon.png"></image>
+        <text>QQ</text>
+      </view>
+      <view class="share-btn" bindtap="generatePoster">
+        <image class="share-icon" src="/images/poster-icon.png"></image>
+        <text>生成海报</text>
+      </view>
+    </view>
+    <view class="share-cancel" bindtap="closeShareModal">取消</view>
+  </view>
+</view>

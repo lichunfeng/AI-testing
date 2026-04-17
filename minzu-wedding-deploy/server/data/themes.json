@@ -1,0 +1,29 @@
+[
+  {
+    "id": "senlin",
+    "name": "森系风",
+    "desc": "清新自然，绿植花环，森林精灵",
+    "colors": ["#4A7C59", "#8BC34A", "#C8E6C9"],
+    "malePrompt": "wearing forest wedding suit, green leaf wreath, nature style, woodland theme, elegant",
+    "femalePrompt": "wearing forest wedding dress, flower wreath, green leaves, fairy style, ethereal forest bride",
+    "template": "forest-couple.jpg"
+  },
+  {
+    "id": "jijian",
+    "name": "极简风",
+    "desc": "简约优雅，纯白设计，现代时尚",
+    "colors": ["#FAFAFA", "#BDBDBD", "#212121"],
+    "malePrompt": "wearing minimalist white wedding suit, clean design, modern elegant, simple style",
+    "femalePrompt": "wearing minimalist white wedding dress, clean design, modern elegant, simple style bride",
+    "template": "minimalist-couple.jpg"
+  },
+  {
+    "id": "tonghua",
+    "name": "童话风",
+    "desc": "梦幻浪漫，城堡公主，童话王子",
+    "colors": ["#E91E63", "#9C27B0", "#FFD54F"],
+    "malePrompt": "wearing fairy tale prince wedding costume, royal outfit, magical atmosphere, castle theme",
+    "femalePrompt": "wearing fairy tale princess wedding dress, sparkle, tiara crown, magical atmosphere, castle theme",
+    "template": "fairytale-couple.jpg"
+  }
+]

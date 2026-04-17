@@ -1,0 +1,58 @@
+<!-- pages/upload/upload.wxml -->
+<view class="container">
+  <view class="header">
+    <view class="step-dots">
+      <view class="dot active">1</view>
+      <view class="line"></view>
+      <view class="dot">2</view>
+      <view class="line"></view>
+      <view class="dot">3</view>
+    </view>
+    <text class="step-text">上传照片</text>
+  </view>
+
+  <!-- 上传区域 -->
+  <view class="upload-area">
+    <view class="upload-box {{uploadedImage ? 'has-image' : ''}}" bindtap="uploadImage">
+      <block wx:if="{{!uploadedImage}}">
+        <image class="upload-icon" src="/images/upload-icon.png"></image>
+        <text class="upload-title">点击上传照片</text>
+        <text class="upload-desc">{{mode === 'couple' ? '请上传男女合照' : '请上传单人照片'}}</text>
+      </block>
+      <block wx:else>
+        <image class="preview-image" src="{{uploadedImage}}" mode="aspectFit"></image>
+        <view class="change-btn" catchtap="uploadImage">更换照片</view>
+      </block>
+    </view>
+  </view>
+
+  <!-- 模式提示 -->
+  <view class="mode-tips card" wx:if="{{mode}}">
+    <view class="tip-row">
+      <image class="tip-icon" src="{{mode === 'couple' ? '/images/couple-tip.png' : '/images/single-tip.png'}}"></image>
+      <text>{{mode === 'couple' ? '合照模式：将为男女双方搭配民族婚礼服饰' : '单人模式：将为照片中的主角换装'}}</text>
+    </view>
+  </view>
+
+  <!-- 注意事项 -->
+  <view class="notice card">
+    <view class="notice-title">📸 拍摄建议</view>
+    <view class="notice-item">• 照片清晰，人物面部完整可见</view>
+    <view class="notice-item">• 正面或半侧面效果最佳</view>
+    <view class="notice-item">• 光线充足，避免逆光</view>
+    <view class="notice-item">• 避免穿着过于宽松的衣物</view>
+  </view>
+
+  <!-- 操作按钮 -->
+  <view class="action-area">
+    <button class="btn-primary" bindtap="nextStep" disabled="{{!uploadedImage}}">
+      下一步：选择服饰
+    </button>
+  </view>
+</view>
+
+<!-- 加载遮罩 -->
+<view class="loading-mask" wx:if="{{uploading}}">
+  <view class="loading-spinner"></view>
+  <text class="loading-text">上传中...</text>
+</view>

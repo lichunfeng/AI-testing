@@ -1,0 +1,65 @@
+<!-- pages/index/index.wxml -->
+<view class="container">
+  <!-- 顶部横幅 -->
+  <view class="banner">
+    <image class="banner-bg" src="/images/banner-bg.png" mode="aspectFill"></image>
+    <view class="banner-content">
+      <text class="banner-title">民族婚礼换装馆</text>
+      <text class="banner-subtitle">56个民族传统服饰 · 圆你婚礼梦</text>
+    </view>
+  </view>
+
+  <!-- 功能入口 -->
+  <view class="entry-section">
+    <view class="section-title">选择换装模式</view>
+    
+    <view class="mode-cards">
+      <view class="mode-card {{mode === 'single' ? 'active' : ''}}" bindtap="selectMode" data-mode="single">
+        <image class="mode-icon" src="/images/single-mode.png"></image>
+        <text class="mode-title">单人换装</text>
+        <text class="mode-desc">为单人照片换装</text>
+        <view class="mode-check" wx:if="{{mode === 'single'}}">✓</view>
+      </view>
+      
+      <view class="mode-card {{mode === 'couple' ? 'active' : ''}}" bindtap="selectMode" data-mode="couple">
+        <image class="mode-icon" src="/images/couple-mode.png"></image>
+        <text class="mode-title">合照换装</text>
+        <text class="mode-desc">男女双方搭配换装</text>
+        <view class="mode-check" wx:if="{{mode === 'couple'}}">✓</view>
+      </view>
+    </view>
+  </view>
+
+  <!-- 民族服饰展示 -->
+  <view class="nation-section">
+    <view class="section-title">民族服饰精选</view>
+    <scroll-view class="nation-scroll" scroll-x>
+      <view class="nation-item" wx:for="{{hotNations}}" wx:key="id" bindtap="previewNation" data-nation="{{item}}">
+        <image class="nation-img" src="{{item.image}}" mode="aspectFill"></image>
+        <text class="nation-name">{{item.name}}</text>
+      </view>
+    </scroll-view>
+  </view>
+
+  <!-- 主题风格 -->
+  <view class="theme-section">
+    <view class="section-title">婚礼主题风格</view>
+    <view class="theme-cards">
+      <view class="theme-card" wx:for="{{themes}}" wx:key="id" bindtap="previewTheme" data-theme="{{item}}">
+        <image class="theme-img" src="{{item.image}}" mode="aspectFill"></image>
+        <view class="theme-info">
+          <text class="theme-name">{{item.name}}</text>
+          <text class="theme-desc">{{item.desc}}</text>
+        </view>
+      </view>
+    </view>
+  </view>
+
+  <!-- 开始按钮 -->
+  <view class="action-area">
+    <button class="btn-primary start-btn" bindtap="startDress">
+      <text class="btn-icon">📷</text> 开始换装
+    </button>
+    <text class="tips">支持上传单人或合照，AI智能识别并换装</text>
+  </view>
+</view>
